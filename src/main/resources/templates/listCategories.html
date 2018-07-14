@@ -21,7 +21,7 @@
             <tr th:each="c: ${pageInfo.list}">
                 <td align="center" th:text="${c.id}"></td>
                 <td align="center" th:text="${c.name}"></td>
-                <td align="center" ><a th:href="@{/editCategory(id=${c.id})}">编辑</a></td>
+                <td align="center" ><a th:href="@{/editCategory(id=${c.id},start=${pageInfo.pageNum})}">编辑</a></td>
                 <td align="center" ><a th:href="@{/deleteCategory(id=${c.id})}">删除</a></td>
             </tr>
             </tbody>

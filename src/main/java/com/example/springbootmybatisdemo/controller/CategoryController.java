@@ -32,7 +32,7 @@ public class CategoryController {
         PageHelper.startPage(start,size,"id desc");
         List<Category> categories=categoryMapper.findAll();
         PageInfo<Category> pageInfo=new PageInfo<>(categories);
-        System.out.println(pageInfo.getPageNum());
+//        System.out.println(pageInfo.getPageNum());
         model.addAttribute("pageInfo",pageInfo);
         return "listCategories";
     }
@@ -48,14 +48,15 @@ public class CategoryController {
         return "redirect:listCategories";
     }
     @RequestMapping("/updateCategory")
-    public String updateCategory(Category category)throws Exception{
+    public String updateCategory(Category category,int start)throws Exception{
         categoryMapper.update(category);
-        return "redirect:listCategories";
+        return "redirect:listCategories?start="+start;
     }
     @RequestMapping("/editCategory")
-    public String editCategory(int id,Model model)throws Exception{
+    public String editCategory(int id,Model model,int start)throws Exception{
         Category category=categoryMapper.get(id);
         model.addAttribute("category",category);
+        model.addAttribute("start",start);
         return "editCategory";
     }
 
