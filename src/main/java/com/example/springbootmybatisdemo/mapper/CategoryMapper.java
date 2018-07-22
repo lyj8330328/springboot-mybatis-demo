@@ -2,10 +2,11 @@ package com.example.springbootmybatisdemo.mapper;
 
 import com.example.springbootmybatisdemo.pojo.Category;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Repository
 @Mapper
 public interface CategoryMapper {
     @Select("select * from category")
